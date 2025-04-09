@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <titl>황금찬프로젝트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        nav {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+        }
+        section {
+            display: none;
+            padding: 20px;
+        }
+        .active {
+            display: block;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .button {
+            width: 85%;
+            height: 1.5cm;
+            font-size: 18px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #23272b;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>도서 분류 시스템</nav>
+
+    <!-- Home 섹션 -->
+    <section id="home" class="active">
+        <h2>Home</h2>
+        <div class="button-container">
+            <button class="button" onclick="goToLink()">도서 검색</button>
+            <button class="button" onclick="showSection('front')">001~899번대</button>
+            <button class="button" onclick="showSection('back')">900번대</button>
+        </div>
+    </section>
+
+    <!-- 앞 섹션 (001~899번대) -->
+    <section id="front">
+        <h2>001~899번대</h2>
+        <div class="image-container">
+            <img src="001-899.jpg" alt="001~899번대 도서 이미지">
+        </div>
+        <button class="button" onclick="showSection('home')">뒤로가기</button>
+    </section>
+
+    <!-- 뒤 섹션 (900번대) -->
+    <section id="back">
+        <h2>900번대</h2>
+        <div class="image-container">
+            <img src="900.jpg" alt="900번대 도서 이미지">
+        </div>
+        <button class="button" onclick="showSection('home')">뒤로가기</button>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll("section").forEach(section => {
+                section.classList.remove("active");
+            });
+            document.getElementById(sectionId).classList.add("active");
+        }
+
+        function goToLink() {
+            window.location.href = "https://library.example.com/search";
+        }
+    </script>
+</body>
+</html>
